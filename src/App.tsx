@@ -18,6 +18,7 @@ function App() {
 
   function deleteTodo(index:number) {
     const newTodos = todos.filter((todo, todoIndex) => {
+      console.log(todo)
       return todoIndex !== index;
     });
     setTodos(newTodos);
