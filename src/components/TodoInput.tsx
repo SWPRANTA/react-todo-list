@@ -1,6 +1,10 @@
-import { useState } from "react";
+interface TodoInputProps {
+  todoVal: string;
+  setTodoVal: React.Dispatch<React.SetStateAction<string>>;
+  addTodo: (todo: string) => void;
+}
 
-export default function TodoInput(props) {
+export default function TodoInput(props:TodoInputProps) {
   const {addTodo, todoVal, setTodoVal} = props;
 
 

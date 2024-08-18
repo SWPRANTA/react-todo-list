@@ -1,4 +1,12 @@
-export default function TodoCard(props) {
+interface TodoCardProps {
+  children: React.ReactNode; // Represents the child elements inside the TodoCard
+  deleteTodo: (index: number) => void; // Function to delete a todo
+  editTodo: (index: number) => void; // Function to edit a todo
+  index: number; // The index of the current todo item
+}
+
+
+export default function TodoCard(props:TodoCardProps) {
   const {children, deleteTodo, editTodo, index} = props;
   return (
     <li className="todoItem">

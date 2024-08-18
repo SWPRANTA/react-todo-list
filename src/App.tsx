@@ -4,8 +4,8 @@ import TodoList from "./components/TodoList"
 
 
 function App() {
-  const [todos, setTodos] = useState(['']);
-  const [todoVal, setTodoVal] = useState('');
+  const [todos, setTodos] = useState<string[]>([]);
+  const [todoVal, setTodoVal] = useState<string>('');
 
   function persistTodos(newList: string[]) {
     localStorage.setItem('todos', JSON.stringify({todos: newList}));
@@ -34,12 +34,12 @@ function App() {
     if(!localStorage){
       return
     }
-    let localTodos = localStorage.getItem('todos');
-    if(!localTodos){
-      return
+    const localTodos = localStorage.getItem('todos');
+    if(localTodos){
+      const parsedTodos: string[] = JSON.parse(localTodos).todos || [];
+      setTodos(parsedTodos);
     }
-    localTodos = JSON.parse(localTodos).todos;
-    setTodos(localTodos);
+    
 
   }, [])
   return (
